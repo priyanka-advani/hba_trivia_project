@@ -1,9 +1,7 @@
-trivia_q_and_a = {
-    "Q1": "A1",
-    "Q2": "A2",
-    "Q3": "A3" }
-
-# trivia_questions = trivia_q_and_a.keys()
+TRIVIA_Q_AND_A = {
+    "Q1? A) B) C)": "A",
+    "Q2? A) B) C)": "B",
+    "Q3? A) B) C)": "C" }
 
 def calculate_score(current_score):
     new_score = current_score + 1
@@ -11,14 +9,14 @@ def calculate_score(current_score):
 
 def play_trivia():
     user_score = 0
-    i = 0 # represents index for trivia_questions list
-    for question in trivia_q_and_a:
+    for question in TRIVIA_Q_AND_A:
         user_answer = (raw_input(question + " ")).upper()
-        if user_answer == trivia_q_and_a[question]:
-            print "Correct"
-            user_score = calculate_score(user_score)
-        else:
-            print "Incorrect"
+        while user_answer != TRIVIA_Q_AND_A[question]:
+            print "Sorry, try again "
+            user_answer = (raw_input(question + " ")).upper() # make this a function
+            continue
+        print "That's right!"
+        user_score = calculate_score(user_score)
         print "Your score is " + str(user_score)
 
 def start_game():
@@ -30,3 +28,8 @@ def start_game():
         print "Maybe next time"
 
 start_game()
+
+# play again
+# multiple guesses
+# tiered scoring
+# random question order
