@@ -3,8 +3,8 @@ TRIVIA_Q_AND_A = {
     "Q2? A) B) C)": "B",
     "Q3? A) B) C)": "C" }
 
-def calculate_score(current_score):
-    new_score = current_score + 1
+def calculate_score(current_score, user_guesses):
+    new_score = current_score + (4 - user_guesses)
     return new_score
 
 def play_trivia():
@@ -16,6 +16,7 @@ def play_trivia():
             user_answer = (raw_input(question + " ")).upper() # make this a function
             continue
         print "That's right!"
+        user_guesses = 
         user_score = calculate_score(user_score)
         print "Your score is " + str(user_score)
 
@@ -28,8 +29,11 @@ def start_game():
         print "Maybe next time"
 
 start_game()
-
+ 
 # play again
-# multiple guesses
 # tiered scoring
 # random question order
+# high scores - save names & scores in a file
+# use an api to get the questions & answers?
+# rounds?
+# timers?
