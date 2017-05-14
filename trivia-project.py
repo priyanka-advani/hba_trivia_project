@@ -3,21 +3,23 @@ TRIVIA_Q_AND_A = {
     "Q2? A) B) C)": "B",
     "Q3? A) B) C)": "C" }
 
-def calculate_score(current_score, user_guesses):
-    new_score = current_score + (4 - user_guesses)
+def calculate_score(current_score, number_of_guesses):
+    new_score = current_score + (4 - number_of_guesses)
     return new_score
 
 def play_trivia():
     user_score = 0
     for question in TRIVIA_Q_AND_A:
         user_answer = (raw_input(question + " ")).upper()
+        user_guesses = 1
         while user_answer != TRIVIA_Q_AND_A[question]:
             print "Sorry, try again "
             user_answer = (raw_input(question + " ")).upper() # make this a function
+            user_guesses = user_guesses + 1
             continue
         print "That's right!"
         user_guesses = 
-        user_score = calculate_score(user_score)
+        user_score = calculate_score(user_score, user_guesses)
         print "Your score is " + str(user_score)
 
 def start_game():
