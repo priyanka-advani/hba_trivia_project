@@ -1,4 +1,14 @@
-TRIVIA_Q_AND_A = {
+CATEGORY_1_Q_AND_A = {
+    "Q1? A) B) C)": "A",
+    "Q2? A) B) C)": "B",
+    "Q3? A) B) C)": "C" }
+
+CATEGORY_2_Q_AND_A = {
+    "Q1? A) B) C)": "A",
+    "Q2? A) B) C)": "B",
+    "Q3? A) B) C)": "C" }
+
+CATEGORY_3_Q_AND_A = {
     "Q1? A) B) C)": "A",
     "Q2? A) B) C)": "B",
     "Q3? A) B) C)": "C" }
@@ -7,7 +17,17 @@ def calculate_score(current_score, number_of_guesses):
     new_score = current_score + (4 - number_of_guesses)
     return new_score
 
-def play_trivia():
+def choose_category():
+    print "Category 1: ABC \nCategory 2: ABC \nCategory 3: ABC"
+    user_category_choice = int(raw_input("Please choose a category: "))
+    if user_category_choice = 1:
+        chosen_category = CATEGORY_1_Q_AND_A
+    elif user_category_choice = 2:
+        chosen_category = CATEGORY_2_Q_AND_A
+    elif user_category_choice = 3:
+        chosen_category = CATEGORY_3_Q_AND_A
+
+def play_trivia(): #need to change to accommodate categories
     user_score = 0
     for question in TRIVIA_Q_AND_A:
         user_answer = (raw_input(question + " ")).upper()
