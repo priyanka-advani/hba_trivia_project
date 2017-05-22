@@ -18,22 +18,22 @@ def play_trivia():
             user_guesses = user_guesses + 1
             continue
         print "That's right!"
-        user_guesses = 
         user_score = calculate_score(user_score, user_guesses)
         print "Your score is " + str(user_score)
+    print "Thanks for playing!"
 
 def start_game():
-    user_choice = raw_input("Do you want to play trivia? Y/N: ")
-    if user_choice.upper() == "Y":
-        print "Let's get started!"
-        play_trivia()
-    elif user_choice.upper() == "N":
-        print "Maybe next time"
+    while True:
+        user_choice = raw_input("Do you want to play trivia? Y/N: ")
+        if user_choice.upper() == "Y":
+            print "Let's get started!"
+            play_trivia()
+        elif user_choice.upper() == "N":
+            print "Maybe next time"
+            break
 
 start_game()
  
-# play again
-# tiered scoring
 # random question order
 # high scores - save names & scores in a file
 # use an api to get the questions & answers?
