@@ -7,28 +7,32 @@ CATEGORY_1_Q_AND_A = {
     "Decadron A) Pokemon B) Big Data C) Prescription Drug": "C" }
 
 CATEGORY_2_Q_AND_A = {
-    "Q1? A) B) C)": "A",
-    "Q2? A) B) C)": "B",
-    "Q3? A) B) C)": "C" }
+    "2000 A) Crouching Tiger, Hidden Dragon B) Gladiator C) Traffic": "B",
+    "2001 A) A Beautiful Mind B) Moulin Rouge! C) LOTR: The Fellowship of the Ring": "A",
+    "2002 A) Chicago B) Gangs of New York C) The Pianist": "A",
+    "2003 A) Lost in Translation B) LOTR: The Return of the King C) Seabiscuit": "B",
+    "2004 A) The Aviator B) Finding Neverland C) Million Dollar Baby": "C" }
 
 CATEGORY_3_Q_AND_A = {
-    "Q1? A) B) C)": "A",
-    "Q2? A) B) C)": "B",
-    "Q3? A) B) C)": "C" }
+    "The fear of snakes A) Entomophobia B) Ophidiophobia C) Selachophobia": "B",
+    "The fear of crowds A) Chiroptophobia B) Enochlophobia C) Oneirophobia": "B",
+    "The fear of being robbed A) Aurophobia B) C)": "C" }
 
 def calculate_score(current_score, number_of_guesses):
     new_score = current_score + (4 - number_of_guesses)
     return new_score
 
 def choose_category():
-    print "1) Pokemon or Big Data technology \n2) ABC \n3) ABC"
+    print "1) Pokemon, Big Data, or Prescription Drug? \n2) Oscar Winning Movies (2000s) \n3) Phobias"
     user_category_choice = int(raw_input("Please choose a category: "))
     if user_category_choice == 1:
         print "Is it a Pokemon, big data technology, or prescription drug?"
         chosen_category = CATEGORY_1_Q_AND_A
     elif user_category_choice == 2:
+        print "Which movie won the Oscar for Best Picture in each year?"
         chosen_category = CATEGORY_2_Q_AND_A
     elif user_category_choice == 3:
+        print "Can you identify the phobia by its definition?"
         chosen_category = CATEGORY_3_Q_AND_A
     return chosen_category
 
