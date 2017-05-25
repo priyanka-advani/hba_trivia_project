@@ -25,13 +25,19 @@ CATEGORY_3_Q_AND_A = {
     "The fear of mice A) Herpetophobia B) Musophobia C) Neophobia": "B" }
 
 
+# for printing in color
 color_gray = "\033[1;30m{}\033[1;m"
 color_blue = "\033[1;34m{}\033[1;m"
 color_green = "\033[1;32m{}\033[1;m"
 color_red = "\033[1;31m{}\033[1;m"
 highlight_gray = "\033[1;47m{}\033[1;m"
 
+
 def calculate_score(original_score, number_of_guesses):
+    """ Calculates user score after each question """
+
+    # score for each question starts at 3 and bottoms out at 0
+    # negative scores are not possible
     if number_of_guesses <= 4:
         current_question_score = (4 - number_of_guesses)
     else:
@@ -41,6 +47,8 @@ def calculate_score(original_score, number_of_guesses):
 
 
 def choose_category():
+    """ Asks user to choose a category """
+
     while True:
         print color_gray.format("\nCategories: \n1) Pokemon, Big Data, or Prescription Drug? \n2) Oscar Winning Movies (2000s) \n3) Phobias")
         user_category_choice = raw_input(color_blue.format("\nPlease choose a category: "))
@@ -64,6 +72,8 @@ def choose_category():
 
 
 def play_trivia():
+    """ Takes user category choice and loops through questions for that category """
+    
     user_score = 0
     chosen_category = choose_category()
     for question in chosen_category:
@@ -77,10 +87,12 @@ def play_trivia():
         print color_green.format("\nThat's right!")
         user_score = calculate_score(user_score, user_guesses)
         print color_gray.format("Your score is " + str(user_score))
-    print highlight_gray.format("\nThanks for playing! Your final score is ") + color_green.format(str(user_score))
+    print highlight_gray.format("\nThanks for playing! Your final score is " + str(user_score))
 
 
 def start_game():
+    """ Starts the game by asking the user if they want to play """
+
     while True:
         user_choice = raw_input(color_blue.format("\nDo you want to play trivia? Y/N: "))
         if user_choice.upper() == "Y":
