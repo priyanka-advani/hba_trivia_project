@@ -37,18 +37,26 @@ def calculate_score(current_score, number_of_guesses):
 
 
 def choose_category():
-    print color_gray.format("\nCategories: \n1) Pokemon, Big Data, or Prescription Drug? \n2) Oscar Winning Movies (2000s) \n3) Phobias")
-    user_category_choice = int(raw_input(color_blue.format("\nPlease choose a category: ")))
-    if user_category_choice == 1:
-        print highlight_gray.format("\nCategory 1: Is it a Pokemon, big data technology, or prescription drug?")
-        chosen_category = CATEGORY_1_Q_AND_A
-    elif user_category_choice == 2:
-        print highlight_gray.format("\nCategory 2: Which movie won the Oscar for Best Picture in each year?")
-        chosen_category = CATEGORY_2_Q_AND_A
-    elif user_category_choice == 3:
-        print highlight_gray.format("\nCategory 3: Can you identify the phobia by its definition?")
-        chosen_category = CATEGORY_3_Q_AND_A
-    return chosen_category
+    while True:
+        print color_gray.format("\nCategories: \n1) Pokemon, Big Data, or Prescription Drug? \n2) Oscar Winning Movies (2000s) \n3) Phobias")
+        user_category_choice = raw_input(color_blue.format("\nPlease choose a category: "))
+        if user_category_choice.isdigit():
+            if int(user_category_choice) == 1:
+                print highlight_gray.format("\nCategory 1: Is it a Pokemon, big data technology, or prescription drug?")
+                chosen_category = CATEGORY_1_Q_AND_A
+                return chosen_category
+            elif int(user_category_choice) == 2:
+                print highlight_gray.format("\nCategory 2: Which movie won the Oscar for Best Picture in each year?")
+                chosen_category = CATEGORY_2_Q_AND_A
+                return chosen_category
+            elif int(user_category_choice) == 3:
+                print highlight_gray.format("\nCategory 3: Can you identify the phobia by its definition?")
+                chosen_category = CATEGORY_3_Q_AND_A
+                return chosen_category
+            else:
+                print color_red.format("\n Sorry, that is not a valid category")
+        else:
+            print color_red.format("\n Sorry, that is not a valid category")
 
 
 def play_trivia():
@@ -58,7 +66,7 @@ def play_trivia():
         user_answer = (raw_input(color_gray.format("\n" + question) + color_blue.format("\nYour answer: "))).upper()
         user_guesses = 1
         while user_answer != chosen_category[question]:
-            print color_red.format("\nSorry, try again ")
+            print color_red.format("\nSorry, try again")
             user_answer = (raw_input(color_gray.format("\n" + question) + color_blue.format("\nYour answer: "))).upper() # make this a function
             user_guesses = user_guesses + 1
             continue
