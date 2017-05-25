@@ -25,22 +25,28 @@ CATEGORY_3_Q_AND_A = {
     "The fear of mice A) Herpetophobia B) Musophobia C) Neophobia": "B" }
 
 
+color_gray = "\033[1;30m{}\033[1;m"
+color_blue = "\033[1;34m{}\033[1;m"
+color_green = "\033[1;32m{}\033[1;m"
+color_red = "\033[1;31m{}\033[1;m"
+highlight_gray = "\033[1;47m{}\033[1;m"
+
 def calculate_score(current_score, number_of_guesses):
     new_score = current_score + (4 - number_of_guesses)
     return new_score
 
 
 def choose_category():
-    print "\nCategories: \n1) Pokemon, Big Data, or Prescription Drug? \n2) Oscar Winning Movies (2000s) \n3) Phobias"
-    user_category_choice = int(raw_input("\nPlease choose a category: "))
+    print color_gray.format("\nCategories: \n1) Pokemon, Big Data, or Prescription Drug? \n2) Oscar Winning Movies (2000s) \n3) Phobias")
+    user_category_choice = int(raw_input(color_blue.format("\nPlease choose a category: ")))
     if user_category_choice == 1:
-        print "\nCategory 1: Is it a Pokemon, big data technology, or prescription drug?"
+        print highlight_gray.format("\nCategory 1: Is it a Pokemon, big data technology, or prescription drug?")
         chosen_category = CATEGORY_1_Q_AND_A
     elif user_category_choice == 2:
-        print "\nCategory 2: Which movie won the Oscar for Best Picture in each year?"
+        print highlight_gray.format("\nCategory 2: Which movie won the Oscar for Best Picture in each year?")
         chosen_category = CATEGORY_2_Q_AND_A
     elif user_category_choice == 3:
-        print "\nCategory 3: Can you identify the phobia by its definition?"
+        print highlight_gray.format("\nCategory 3: Can you identify the phobia by its definition?")
         chosen_category = CATEGORY_3_Q_AND_A
     return chosen_category
 
@@ -49,27 +55,27 @@ def play_trivia():
     user_score = 0
     chosen_category = choose_category()
     for question in chosen_category:
-        user_answer = (raw_input("\n" + question + "\nYour answer: ")).upper()
+        user_answer = (raw_input(color_gray.format("\n" + question) + color_blue.format("\nYour answer: "))).upper()
         user_guesses = 1
         while user_answer != chosen_category[question]:
-            print "\nSorry, try again "
-            user_answer = (raw_input("\n" + question + "\nYour answer: ")).upper() # make this a function
+            print color_red.format("\nSorry, try again ")
+            user_answer = (raw_input(color_gray.format("\n" + question) + color_blue.format("\nYour answer: "))).upper() # make this a function
             user_guesses = user_guesses + 1
             continue
-        print "\nThat's right!"
+        print color_green.format("\nThat's right!")
         user_score = calculate_score(user_score, user_guesses)
-        print "Your score is " + str(user_score)
-    print "Thanks for playing!\n"
+        print color_gray.format("Your score is " + str(user_score))
+    print highlight_gray.format("\nThanks for playing! Your final score is ") + color_green.format(str(user_score))
 
 
 def start_game():
     while True:
-        user_choice = raw_input("Do you want to play trivia? Y/N: ")
+        user_choice = raw_input(color_blue.format("\nDo you want to play trivia? Y/N: "))
         if user_choice.upper() == "Y":
-            print "\nGreat, let's get started!"
+            print color_gray.format("\nGreat, let's get started!")
             play_trivia()
         elif user_choice.upper() == "N":
-            print "Maybe next time. Goodbye!"
+            print color_gray.format("\nMaybe next time. Goodbye!")
             break
 
 
