@@ -31,8 +31,12 @@ color_green = "\033[1;32m{}\033[1;m"
 color_red = "\033[1;31m{}\033[1;m"
 highlight_gray = "\033[1;47m{}\033[1;m"
 
-def calculate_score(current_score, number_of_guesses):
-    new_score = current_score + (4 - number_of_guesses)
+def calculate_score(original_score, number_of_guesses):
+    if number_of_guesses <= 4:
+        current_question_score = (4 - number_of_guesses)
+    else:
+        current_question_score = 0
+    new_score = original_score + current_question_score
     return new_score
 
 
@@ -81,6 +85,11 @@ def start_game():
         user_choice = raw_input(color_blue.format("\nDo you want to play trivia? Y/N: "))
         if user_choice.upper() == "Y":
             print color_gray.format("\nGreat, let's get started!")
+            print color_gray.format("\nRules:")
+            print color_gray.format("- You must choose one of the available categories")
+            print color_gray.format("- Getting it right on the first guess is worth 3 points, on the second guess is worth 2 points, and so on")
+            print color_gray.format("- If it takes you four or more guesses to get the answer right, you will get 0 points")
+            print color_gray.format("- You must answer each question in order to get to the next question")
             play_trivia()
         elif user_choice.upper() == "N":
             print color_gray.format("\nMaybe next time. Goodbye!")
