@@ -89,6 +89,7 @@ def start_game():
             print color_gray.format("- You must choose one of the available categories")
             print color_gray.format("- Getting it right on the first guess is worth 3 points, on the second guess is worth 2 points, and so on")
             print color_gray.format("- If it takes you four or more guesses to get the answer right, you will get 0 points")
+            print color_gray.format("- Invalid answer choices count towards your number of guesses")
             print color_gray.format("- You must answer each question in order to get to the next question")
             play_trivia()
         elif user_choice.upper() == "N":
